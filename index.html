@@ -116,22 +116,21 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-   <a-scene embedded vr-mode-ui='enabled: false' arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;">
-    <a-assets>
-        <video src="./public/video/AR Business Card Concept made with ARKit.mp4" preload="auto" id="vid" response-type="arraybuffer" crossorigin webkit-playsinline autoplay="false" playsinline loop></video>
-    </a-assets>
-    <a-marker preset="custom" type="pattern" url="./public/image/pattern-testGitQR.patt">
-        <!-- Adjusted video position -->
-        <a-video id="video" src="#vid" width="1" height="0.5" position="0 0 0" rotation="-90 0 0" scale="1 1 1" muted></a-video>
-        <a-entity id="playButton" position="0 0 0.1" rotation="-90 0 0">
-            <a-circle color="black" radius="0.1" position="0 0 0"></a-circle>
-            <a-text value="Play" color="white" align="center" position="0 0 0" scale="0.1 0.1 0.1"></a-text>
-        </a-entity>
-    </a-marker>
-    <!-- Added camera position adjustment -->
-    <a-entity camera="userHeight: ; position: 0 0 0;"></a-entity>
-</a-scene>
-
+    <a-scene embedded vr-mode-ui='enabled: false' arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;">
+        <a-assets>
+            <video src="./public/video/AR Business Card Concept made with ARKit.mp4" preload="auto" id="vid" response-type="arraybuffer" crossorigin webkit-playsinline autoplay="false" playsinline loop></video>
+        </a-assets>
+        <a-marker preset="custom" type="pattern" url="./public/image/pattern-testGitQR.patt">
+            <!-- Adjusted video position -->
+            <a-video id="video" src="#vid" width="1" height="0.5" position="0 0 0" rotation="-90 0 0" scale="1 1 1" muted></a-video>
+            <a-entity id="playButton" position="0 0 0.1" rotation="-90 0 0">
+                <a-circle color="black" radius="0.1" position="0 0 0"></a-circle>
+                <a-text value="Play" color="white" align="center" position="0 0 0" scale="0.5 0.5 0.5"></a-text>
+            </a-entity>
+        </a-marker>
+        <!-- Adjusted camera properties to mimic mobile camera behavior -->
+        <a-entity camera="userHeight: 1.6; fov: 60; near: 0.1; far: 10000; look-controls-enabled: true;"></a-entity>
+    </a-scene>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
