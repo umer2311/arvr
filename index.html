@@ -22,7 +22,7 @@
             position="0 0 0" rotation="-90 0 0" material="shader: flat; scale: 2 2 2" muted></a-video>
         <a-entity id="playButton" position="0 0 1" rotation="-90 0 0">
             <a-circle color="black" radius="0.2"  position="0 0 0"></a-circle>
-            <a-text value="Play" color="white" align="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
+            <a-text value="Play" color="white" align ="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
         </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
@@ -48,10 +48,10 @@
                             }
                         });
                         console.log('Selected device ID:', deviceId);
-        
+                        let scene
                         if (deviceId) {
                             // If a device ID is found
-                            let scene = document.querySelector('a-scene');
+                             scene = document.querySelector('a-scene');
                             scene.setAttribute('arjs', 'sourceType: webcam; sourceId: ' + deviceId);
                         }
         
