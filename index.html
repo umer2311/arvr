@@ -103,7 +103,7 @@
 
 </html> -->
 
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -127,7 +127,8 @@
                 <a-text value="Play" color="white" align="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
             </a-entity>
         </a-marker>
-        <a-entity camera="userHeight: 1.6;"></a-entity>
+        <!-- Define a camera entity with an id -->
+        <a-entity id="primaryCamera" camera="userHeight: 1.6;"></a-entity>
     </a-scene>
 
     <script>
@@ -140,24 +141,28 @@
                     console.log('Available devices:', devices);
     
                     var primaryCameraId;
-                for (let i = 0; i < devices.length; i++) {
-                    const device = devices[i];
-                    // Iterate through each device
-                    console.log('Device:', device);
-
-                    // Check if the label contains 'facing back'
-                    if (device.kind === 'videoinput' && device.label.toLowerCase().includes('camera2 2, facing back')) {
-                        // If the device is a video input and its label contains 'facing back'
-                        primaryCameraId = device.deviceId;
-                        break; // Exit the loop once the desired camera is found
+                    for (let i = 0; i < devices.length; i++) {
+                        const device = devices[i];
+                        // Iterate through each device
+                        console.log('Device:', device);
+    
+                        // Check if the label contains 'facing back'
+                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('camera2 2, facing back')) {
+                            // If the device is a video input and its label contains 'facing back'
+                            primaryCameraId = device.deviceId;
+                            break; // Exit the loop once the desired camera is found
+                        }
                     }
-                }
                     console.log('Selected primary camera ID:', primaryCameraId);
     
                     if (primaryCameraId) {
                         // If a primary camera ID is found
                         let scene = document.querySelector('a-scene');
                         scene.setAttribute('arjs', `sourceType: webcam; sourceId:${primaryCameraId}`);
+                        
+                        // Set the camera entity with id "primaryCamera" as active
+                        var primaryCameraEl = document.querySelector('#primaryCamera');
+                        primaryCameraEl.setAttribute('camera', 'active', true);
                     } else {
                         console.log('Primary camera not found.');
                     }
