@@ -144,7 +144,8 @@
                         // Iterate through each device
                         console.log('Device:', device);
 
-                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('back')) {
+                        if (device.kind === 'videoinput' && device.label === 'camera2 2, facing back') {
+
 
                             // If the device is a video input
                             primaryCameraId = device.deviceId;
