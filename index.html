@@ -22,64 +22,45 @@
             position="0 0 0" rotation="-90 0 0" material="shader: flat; scale: 2 2 2" muted></a-video>
         <a-entity id="playButton" position="0 0 1" rotation="-90 0 0">
             <a-circle color="black" radius="0.2"  position="0 0 0"></a-circle>
-            <a-text value="Play" color="white" align ="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
+            <a-text value="Play" color="white" align="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
         </a-entity>
     </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
         <!-- <a-marker-camera camera="fov: 80; zoom: 1.0;"></a-marker-camera> -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // When the DOM content is loaded, execute this function
-        
-                navigator.mediaDevices.enumerateDevices()
-                    .then(function(devices) {
-                        // Retrieve a list of media devices connected to the system
-                        console.log('Available devices:', devices);
-        
-                        var deviceId;
-                        devices.forEach(function(device) {
-                            // Iterate through each device
-                            console.log('Device:', device);
-        
-                            if (device.kind === 'videoinput' && device.label === 'camera2 0, facing back') {
-                                // If the device is a video input and matches the specified label
-                                deviceId = device.deviceId;
-                            }
-                        });
-                        console.log('Selected device ID:', deviceId);
-                        let scene
-                        if (deviceId) {
-                            // If a device ID is found
-                             scene = document.querySelector('a-scene');
-                            scene.setAttribute('arjs', 'sourceType: webcam; sourceId: ' + deviceId);
-                        }
-        
-                        let video = document.querySelector('#vid'); 
-                        let playButton = document.querySelector('#playButton');
-                        scene.addEventListener('click', function () {
-                            // Add a click event listener to the scene
-                            if(video.paused) {
-                                // If the video is paused
-                                video.play();
-                                console.log('Video is playing');
-                                playButton.setAttribute('visible', 'false');
-                            } else {
-                                // If the video is playing
-                                video.pause();
-                                console.log('Video is paused');
-                                playButton.setAttribute('visible', 'true');
-                            }
-                        });
-                    })
-                    .catch(function(err) {
-                        // Catch any errors that occur during device enumeration
-                        console.error('Error:', err.name + ": " + err.message);
-                    });
+  <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        navigator.mediaDevices.enumerateDevices()
+            .then(function(devices) {
+                var deviceId;
+                devices.forEach(function(device) {
+                    if (device.kind === 'videoinput' && device.label === 'camera2 2, facing back') {
+                        deviceId = device.deviceId;
+                    }
+                });
+                if (deviceId) {
+                    let scene = document.querySelector('a-scene');
+                    scene.setAttribute('arjs', 'sourceType: webcam; sourceId: ' + deviceId);
+                }
+
+                let video = document.querySelector('#vid'); 
+                let playButton = document.querySelector('#playButton');
+                scene.addEventListener('click', function () {
+                    if(video.paused) {
+                        video.play();
+                        p
+                        videlayButton.setAttribute('visible', 'false');
+                    } else {o.pause();
+                        playButton.setAttribute('visible', 'true');
+                    }
+                });
+            })
+            .catch(function(err) {
+                console.log(err.name + ": " + err.message);
             });
-        </script>
-        
-<!-- <script>
+    });
+</script> -->
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         let scene = document.querySelector('a-scene');
         let video = document.querySelector('#vid'); 
@@ -94,7 +75,7 @@
             }
         });
     });
-</script> -->
+</script>
 </body>
 
 </html>
