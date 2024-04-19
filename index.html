@@ -151,7 +151,7 @@
                         console.log('Device:', device);
     
                         // Check if the label contains 'facing back'
-                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('camera2 2, facing back')) {
+                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('camera2 0, facing back')) {
                             // If the device is a video input and its label contains 'facing back'
                             primaryCameraId = device.deviceId;
                             break; // Exit the loop once the desired camera is found
