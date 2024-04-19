@@ -133,27 +133,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // When the DOM content is loaded, execute this function
-
+    
             navigator.mediaDevices.enumerateDevices()
                 .then(function (devices) {
                     // Retrieve a list of media devices connected to the system
                     console.log('Available devices:', devices);
-
+    
                     var primaryCameraId;
                     devices.forEach(function (device) {
                         // Iterate through each device
                         console.log('Device:', device);
-
-                        if (device.kind === 'videoinput' && device.label === 'camera2 2, facing back') {
-
-
-                            // If the device is a video input
+    
+                        // Check if the label contains 'facing back'
+                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('facing back')) {
+                            // If the device is a video input and its label contains 'facing back'
                             primaryCameraId = device.deviceId;
-
                         }
                     });
                     console.log('Selected primary camera ID:', primaryCameraId);
-
+    
                     if (primaryCameraId) {
                         // If a primary camera ID is found
                         let scene = document.querySelector('a-scene');
