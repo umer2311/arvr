@@ -140,16 +140,18 @@
                     console.log('Available devices:', devices);
     
                     var primaryCameraId;
-                    devices.forEach(function (device) {
-                        // Iterate through each device
-                        console.log('Device:', device);
-    
-                        // Check if the label contains 'facing back'
-                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('facing back')) {
-                            // If the device is a video input and its label contains 'facing back'
-                            primaryCameraId = device.deviceId;
-                        }
-                    });
+                for (let i = 0; i < devices.length; i++) {
+                    const device = devices[i];
+                    // Iterate through each device
+                    console.log('Device:', device);
+
+                    // Check if the label contains 'facing back'
+                    if (device.kind === 'videoinput' && device.label.toLowerCase().includes('facing back')) {
+                        // If the device is a video input and its label contains 'facing back'
+                        primaryCameraId = device.deviceId;
+                        break; // Exit the loop once the desired camera is found
+                    }
+                }
                     console.log('Selected primary camera ID:', primaryCameraId);
     
                     if (primaryCameraId) {
