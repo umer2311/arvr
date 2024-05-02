@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,10 +25,10 @@
             <a-text value="Play" color="white" align="center" position="0 0 0.05" scale="0.8 0.8 0.8"></a-text>
         </a-entity>
     </a-marker>
-    <a-entity camera></a-entity>
+    <a-marker-camera camera="fov: 80; zoom: 1.0;"></a-marker-camera>
 </a-scene>
-        <!-- <a-marker-camera camera="fov: 80; zoom: 1.0;"></a-marker-camera> -->
-        <!-- <script>
+        <!--  -->
+       <script>
             document.addEventListener('DOMContentLoaded', function () {
                 // When the DOM content is loaded, execute this function
         
@@ -64,10 +64,10 @@
                         // Catch any errors that occur during device enumeration
                         console.error('Error:', err.name + ": " + err.message);
                     });
-            });
-        </script> --> 
+             });
+        </script> 
         
-<!-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         let scene = document.querySelector('a-scene');
         let video = document.querySelector('#vid'); 
@@ -82,111 +82,9 @@
             }
         });
     });
-</script> -->
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        let scene = document.querySelector('a-scene');
-        let video = document.querySelector('#vid'); 
-        let playButton = document.querySelector('#playButton');
-        scene.addEventListener('click', function () {
-            if(video.paused) {
-                video.play();
-                playButton.setAttribute('visible', 'false');
-            } else {
-                video.pause();
-                playButton.setAttribute('visible', 'true');
-            }
-        });
-    });
-</script> -->
-<!-- </body>
-
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR.js Video Example</title>
-
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.1.7/aframe/build/aframe-ar.js"></script>
-</head>
-
-<body style="margin: 0; overflow: hidden;">
-    <a-scene embedded vr-mode-ui='enabled: false' arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;">
-        <a-assets>
-            <video src="./public/video/AR Business Card Concept made with ARKit.mp4" preload="auto" id="vid" response-type="arraybuffer" crossorigin webkit-playsinline autoplay="false" playsinline loop></video>
-        </a-assets>
-        <a-marker preset="custom" type="pattern" url="./public/image/pattern-testGitQR.patt">
-            <!-- Adjusted video position -->
-            <a-video id="video" src="#vid" width="3" height="1.5" position="0 0 0" rotation="-90 0 0" scale="1 1 1" muted></a-video>
-            <a-entity id="playButton" position="0 0 0.1" rotation="-90 0 0">
-                <a-circle color="black" radius="0.1" position="0 0 0"></a-circle>
-                <a-text value="Play" color="white" align="center" position="0 0 0" scale="0.5 0.5 0.5"></a-text>
-            </a-entity>
-        </a-marker>
-        <!-- Adjusted camera properties to mimic mobile camera behavior -->
-        <a-entity id="rig" position="25 10 0">
-            <a-entity id="camera" camera look-controls></a-entity>
-          </a-entity>
-        <!-- <a-entity camera="userHeight: 0.6; fov: 60; near: 0.1; far: 10000; look-controls-enabled: true;"></a-entity> -->
-    </a-scene>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // When the DOM content is loaded, execute this function
-
-            navigator.mediaDevices.enumerateDevices()
-                .then(function (devices) {
-                    // Retrieve a list of media devices connected to the system
-                    console.log('Available devices:', devices);
-
-                    var primaryCameraId;
-                    for (let i = 0; i < devices.length; i++) {
-                        const device = devices[i];
-                        // Iterate through each device
-                        console.log('Device:', device);
-
-                        // Check if the label contains 'facing back'
-                        if (device.kind === 'videoinput' && device.label.toLowerCase().includes('camera2 2, facing back')) {
-                            // If the device is a video input and its label contains 'facing back'
-                            primaryCameraId = device.deviceId;
-                            break; // Exit the loop once the desired camera is found
-                        }
-                    }
-                    console.log('Selected primary camera ID:', primaryCameraId);
-
-                    if (primaryCameraId) {
-                        // If a primary camera ID is found
-                        let scene = document.querySelector('a-scene');
-                        scene.setAttribute('arjs', `sourceType: webcam; sourceId:${primaryCameraId}`);
-                    } else {
-                        console.log('Primary camera not found.');
-                    }
-                })
-                .catch(function (err) {
-                    // Catch any errors that occur during device enumeration
-                    console.error('Error:', err.name + ": " + err.message);
-                });
-
-            // Add event listener to toggle video playback
-            let video = document.querySelector('#vid');
-            let playButton = document.querySelector('#playButton');
-            playButton.addEventListener('click', function () {
-                if (video.paused) {
-                    video.play();
-                    playButton.setAttribute('visible', 'false');
-                } else {
-                    video.pause();
-                    playButton.setAttribute('visible', 'true');
-                }
-            });
-        });
-    </script>
+</script>
 
 </body>
 
 </html>
+
